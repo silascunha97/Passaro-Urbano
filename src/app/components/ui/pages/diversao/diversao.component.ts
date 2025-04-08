@@ -15,10 +15,11 @@ import { OfertasInterface } from '../../../interfaces/ofertas.interface';
   providers: [OfertasService], // Declara o serviço OfertasService como um provedor para este componente.
 })
 export class DiversaoComponent implements OnInit {
+[x: string]: any;
   
   // Declara uma propriedade pública chamada ofertas, que armazenará os dados de ofertas.
   // O operador `!` indica que a variável será inicializada antes de ser usada.
-  public ofertas!: OfertasInterface[];
+  public ofertas: OfertasInterface[] = [];
 
   // Construtor da classe, que injeta o serviço OfertasService como dependência.
   // Isso permite que o componente utilize os métodos do serviço para buscar dados.
@@ -30,7 +31,7 @@ export class DiversaoComponent implements OnInit {
     this.ofertasService.getOfertasCategorias('diversao')
       .subscribe((ofertas: OfertasInterface[]) => { // Inscreve-se no Observable retornado pelo serviço.
         this.ofertas = ofertas; // Armazena os dados recebidos na propriedade ofertas.
-        //console.log(this.ofertas); // (Comentado) Exibe os dados no console para depuração.
+        // console.log(this.ofertas); // (Comentado) Exibe os dados no console para depuração.
       });
   }
 }

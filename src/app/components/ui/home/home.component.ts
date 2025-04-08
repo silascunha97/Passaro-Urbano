@@ -8,8 +8,6 @@ import { OfertasService } from '../../service/ofertas.service';
 import { OfertasInterface } from '../../interfaces/ofertas.interface';
 
 // Importa o módulo CommonModule, que fornece diretivas comuns do Angular, como *ngIf e *ngFor.
-import { CommonModule } from '@angular/common';
-
 @Component({
   selector: 'app-home', // Define o seletor do componente, usado para referenciá-lo no HTML.
   standalone: false, // Indica que este componente não é independente (faz parte de um módulo).
@@ -18,7 +16,6 @@ import { CommonModule } from '@angular/common';
   providers: [OfertasService], // Declara o serviço OfertasService como um provedor para este componente.
 })
 export class HomeComponent implements OnInit {
-
   // Construtor da classe, que injeta o serviço OfertasService como dependência.
   // O modificador readonly indica que a propriedade não será alterada após a inicialização.
   constructor(private readonly ofertasServices: OfertasService) {}
