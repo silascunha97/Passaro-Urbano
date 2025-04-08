@@ -1,6 +1,7 @@
 // Importações necessárias para o funcionamento do módulo principal do Angular
+
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core'; // Decorador NgModule e esquema para ignorar erros de templates
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser'; // Módulo para aplicações web e funções para hidratação do cliente
+import { BrowserModule, provideClientHydration, withEventReplay, bootstrapApplication } from '@angular/platform-browser'; // Módulo para aplicações web e funções para hidratação do cliente
 import { AppRoutingModule } from './app-routing.module'; // Módulo de roteamento da aplicação
 import { AppComponent } from './app.component'; // Componente raiz da aplicação
 import { TopoComponent } from './components/ui/topo/topo.component'; // Componente do topo da aplicação
@@ -42,6 +43,7 @@ import { OfertaComponent } from './components/ui/buttons/oferta/oferta.component
   // Provedores de serviços que estarão disponíveis para injeção de dependência
   providers: [
     provideClientHydration(withEventReplay()), // Provedor para habilitar a hidratação do cliente com replay de eventos
+    
     provideHttpClient() // Provedor para configurar o cliente HTTP
   ],
   // Componente raiz que será inicializado ao carregar a aplicação
