@@ -21,6 +21,7 @@ export class OfertasService {
   // O tipo é OfertasInterface[], garantindo que os dados estejam no formato esperado.
   public ofertas: OfertasInterface[] = [];
 
+
   // Construtor da classe, que injeta o serviço HttpClient como dependência.
   // Isso permite que o serviço realize requisições HTTP.
   constructor(private http: HttpClient) { }
@@ -45,5 +46,18 @@ export class OfertasService {
           return ofertas;
         })
       );
+  }
+
+  public getOfertasById(id: number): Observable<OfertasInterface[]> {
+    return this.http.get<OfertasInterface[]>(`http://localhost:3000/ofertas?id=${id}`)
+      .pipe(
+        // Usa o operador map para transformar os dados emitidos pelo Observable.
+        map((ofertas: OfertasInterface[]) => {
+          // Armazena as ofertas na propriedade local this.ofertas.
+          this.ofertas = ofertas;
+          // Retorna as ofertas transformadas.
+          return ofertas;
+        })
+      )
   }
 }
