@@ -12,10 +12,14 @@ import { HttpClient } from '@angular/common/http';
 // - map é um operador que transforma os dados emitidos por um Observable.
 import { map, Observable } from 'rxjs';
 
+import { URL_API } from '../api/app.api'; // Importa a constante API, que contém a URL base da API.
+
 @Injectable({
   providedIn: 'root' // Registra o serviço no nível raiz da aplicação, tornando-o disponível globalmente.
 })
 export class OfertasService {
+
+  //private url_API: string = 'http://localhost:3000/ofertas'; // URL base para as requisições de ofertas.
 
   // Declara uma propriedade pública chamada ofertas, que armazena localmente um array de ofertas.
   // O tipo é OfertasInterface[], garantindo que os dados estejam no formato esperado.
@@ -30,13 +34,13 @@ export class OfertasService {
   public getOfertas(): Observable<OfertasInterface[]> {
     // Faz uma requisição HTTP do tipo GET para a URL especificada.
     // A resposta esperada é um array de objetos no formato definido por OfertasInterface.
-    return this.http.get<OfertasInterface[]>('http://localhost:3000/ofertas?destaque=true');
+    return this.http.get<OfertasInterface[]>(`${URL_API}?destaque=true`);
   }
   
   // Método público que retorna um Observable contendo um array de ofertas filtradas por categoria.
   public getOfertasCategorias(categoria: string): Observable<OfertasInterface[]> {
     // Faz uma requisição HTTP do tipo GET para a URL com o parâmetro de categoria.
-    return this.http.get<OfertasInterface[]>(`http://localhost:3000/ofertas?categoria=${categoria}`)
+    return this.http.get<OfertasInterface[]>(`${URL_API}?categoria=${categoria}`)
       .pipe(
         // Usa o operador map para transformar os dados emitidos pelo Observable.
         map((ofertas: OfertasInterface[]) => {
@@ -49,7 +53,7 @@ export class OfertasService {
   }
 
   public getOfertasById(id: number): Observable<OfertasInterface[]> {
-    return this.http.get<OfertasInterface[]>(`http://localhost:3000/ofertas?id=${id}`)
+    return this.http.get<OfertasInterface[]>(`${URL_API}?id=${id}`)
       .pipe(
         // Usa o operador map para transformar os dados emitidos pelo Observable.
         map((ofertas: OfertasInterface[]) => {

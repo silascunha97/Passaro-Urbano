@@ -46,6 +46,22 @@ export const serverRoutes: (ServerRoute | Route)[] = [
     // Usa carregamento tardio para importar o módulo ou componente associado.
     // O componente OfertaComponent será carregado apenas quando a rota for acessada.
     loadChildren: () => import('./components/ui/buttons/oferta/oferta.component').then(m => m.OfertaComponent)
+  },
+  {
+    // Define uma rota para o caminho 'Onde-Fica', onde ':id' é um parâmetro dinâmico.
+    // Isso permite acessar diferentes ofertas com base no ID fornecido na URL.
+    path: 'oferta/:id/onde-fica',
+    // Usa carregamento tardio para importar o módulo ou componente associado.
+    // O componente OfertaComponent será carregado apenas quando a rota for acessada.
+    loadChildren: () => import('./components/ui/buttons/oferta/onde-fica/onde-fica.component').then(m => m.OndeFicaComponent)
+  },
+  {
+    // Define uma rota para o caminho 'Como-Usar', onde ':id' é um parâmetro dinâmico.
+    // Isso permite acessar diferentes ofertas com base no ID fornecido na URL.
+    path: 'oferta/:id/como-usar',
+    // Usa carregamento tardio para importar o módulo ou componente associado.
+    // O componente OfertaComponent será carregado apenas quando a rota for acessada.
+    loadChildren: () => import('./components/ui/buttons/oferta/como-usar/como-usar.component').then(m => m.ComoUsarComponent)
   }
 ];
 

@@ -13,7 +13,9 @@ import { RestaurantesComponent } from './components/ui/pages/restaurantes/restau
 import { DiversaoComponent } from './components/ui/pages/diversao/diversao.component'; // Componente da página de diversão
 import { RouterModule } from '@angular/router'; // Módulo de roteamento e interface para definir rotas
 import { ROUTES } from './app-routing'; // Conjunto de rotas definidas para a aplicação
-import { OfertaComponent } from './components/ui/buttons/oferta/oferta.component'; // Componente de botão de oferta
+import { OfertaComponent } from './components/ui/buttons/oferta/oferta.component';
+import { ComoUsarComponent } from './components/ui/buttons/oferta/como-usar/como-usar.component';
+import { OndeFicaComponent } from './components/ui/buttons/oferta/onde-fica/onde-fica.component'; // Componente de botão de oferta
 
 // Decorador que define o módulo principal da aplicação
 @NgModule({
@@ -25,7 +27,7 @@ import { OfertaComponent } from './components/ui/buttons/oferta/oferta.component
     RodapeComponent, // Componente do rodapé
     RestaurantesComponent, // Componente da página de restaurantes
     DiversaoComponent, // Componente da página de diversão
-    OfertaComponent // Componente de botão de oferta
+    OfertaComponent, ComoUsarComponent, OndeFicaComponent // Componente de botão de oferta
   ],
   // Importação de outros módulos necessários para o funcionamento da aplicação
   imports: [
