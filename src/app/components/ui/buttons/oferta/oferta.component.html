@@ -1,22 +1,20 @@
 <div class="container">
-  <div class="oferta">
+  <div class="oferta" *ngFor="let oferta of ofertas;">
 
     <div class="row">
-      <div class="col" ngFor="let oferta of ofertas">
-        <h4>  </h4>
+      <div class="col" >
+        <h4> {{oferta.anunciante}} </h4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-6">
         <div class="img_capa">
-          <img src="/assets/ofertas/1/img1.jpg" />
+          <img [src]="oferta.imagens[0].url" />
         </div>
 
         <div class="thumbnails">
-          <img src="/assets/ofertas/1/img2.jpg" />
-          <img src="/assets/ofertas/1/img3.jpg" />
-          <img src="/assets/ofertas/1/img4.jpg" />
+          <img *ngFor="let imagem of oferta.imagens; index as i" [src]="oferta.imagens[i].url" />
         </div>
       </div>
 
@@ -30,7 +28,9 @@
 
         <div class="row">
           <div class="col text-center">
-            <h1>R$ 29,90</h1>
+            <h1> Preço
+              <strong> R$: {{oferta.valor}}0 </strong>
+            </h1>
           </div>
         </div>
 
