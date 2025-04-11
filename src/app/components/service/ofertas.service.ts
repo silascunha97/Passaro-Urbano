@@ -18,12 +18,14 @@ import { URL_API } from '../api/app.api'; // Importa a constante API, que conté
   providedIn: 'root' // Registra o serviço no nível raiz da aplicação, tornando-o disponível globalmente.
 })
 export class OfertasService {
+  
 
   //private url_API: string = 'http://localhost:3000/ofertas'; // URL base para as requisições de ofertas.
 
   // Declara uma propriedade pública chamada ofertas, que armazena localmente um array de ofertas.
   // O tipo é OfertasInterface[], garantindo que os dados estejam no formato esperado.
   public ofertas: OfertasInterface[] = [];
+  public resposta: OfertasInterface[] = [];
 
 
   // Construtor da classe, que injeta o serviço HttpClient como dependência.
@@ -34,13 +36,13 @@ export class OfertasService {
   public getOfertas(): Observable<OfertasInterface[]> {
     // Faz uma requisição HTTP do tipo GET para a URL especificada.
     // A resposta esperada é um array de objetos no formato definido por OfertasInterface.
-    return this.http.get<OfertasInterface[]>(`${URL_API}?destaque=true`);
+    return this.http.get<OfertasInterface[]>(`${URL_API}/ofertas?destaque=true`);
   }
   
   // Método público que retorna um Observable contendo um array de ofertas filtradas por categoria.
   public getOfertasCategorias(categoria: string): Observable<OfertasInterface[]> {
     // Faz uma requisição HTTP do tipo GET para a URL com o parâmetro de categoria.
-    return this.http.get<OfertasInterface[]>(`${URL_API}?categoria=${categoria}`)
+    return this.http.get<OfertasInterface[]>(`${URL_API}/ofertas?categoria=${categoria}`)
       .pipe(
         // Usa o operador map para transformar os dados emitidos pelo Observable.
         map((ofertas: OfertasInterface[]) => {
@@ -53,7 +55,7 @@ export class OfertasService {
   }
 
   public getOfertasById(id: number): Observable<OfertasInterface[]> {
-    return this.http.get<OfertasInterface[]>(`${URL_API}?id=${id}`)
+    return this.http.get<OfertasInterface[]>(`${URL_API}/ofertas?id=${id}`)
       .pipe(
         // Usa o operador map para transformar os dados emitidos pelo Observable.
         map((ofertas: OfertasInterface[]) => {
@@ -63,5 +65,29 @@ export class OfertasService {
           return ofertas;
         })
       )
+  }
+
+  public getComoUsarOfertasById(id: number): Observable<OfertasInterface[]> {
+    return this.http.get<OfertasInterface[]>(`${URL_API}/como-usar?id=${id}`)
+      .pipe(
+        // Usa o operador map para transformar os dados emitidos pelo Observable.
+        map((resposta: any[]) => {
+          this.resposta = resposta;
+          // Retorna as ofertas transformadas.
+          return resposta;
+        })
+      );
+  }
+
+  public getOndeFicaOfertasById(id: number): Observable<OfertasInterface[]> {
+    return this.http.get<OfertasInterface[]>(`${URL_API}/onde-fica?id=${id}`)
+      .pipe(
+        // Usa o operador map para transformar os dados emitidos pelo Observable.
+        map((resposta: any[]) => {
+          this.resposta = resposta;
+          // Retorna as ofertas transformadas.
+          return resposta;
+        })
+      );
   }
 }

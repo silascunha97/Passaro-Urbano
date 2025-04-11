@@ -1,1 +1,9 @@
-<p>onde-fica works!</p>
+<div class="col">
+    <div class="row" *ngFor="let resposta of respostas">
+        <div class="container">
+            <div class="m-2 p-">
+                <p> {{resposta.descricao}} </p>
+            </div>
+        </div>
+    </div>
+</div>

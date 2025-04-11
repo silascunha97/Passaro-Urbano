@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Passaro urbano';
+  title = 'Passaro Urbano 🐦🌆 - Frontend Criação de E-Commerce para estudos';
 }

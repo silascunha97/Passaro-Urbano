@@ -1,1 +1,1 @@
-export  const URL_API = 'http://localhost:3000/ofertas'; // URL base da API
+export  const URL_API = 'http://localhost:3000'; // URL base da API
